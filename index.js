@@ -230,8 +230,6 @@ function startServer() {
   });
 }
 
-startServer();
-
 // Fonction pour maintenir le bot en vie
 function keepAlive() {
   // Auto-ping toutes les 5 minutes vers l'URL externe de l'application

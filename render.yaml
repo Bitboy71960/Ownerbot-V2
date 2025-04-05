@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: discord-bot
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    healthCheckTimeout: 10000
+    envVars:
+      - key: TOKEN
+        sync: false
+      - key: CLIENT_ID
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: PORT
+        value: 3000
+      - key: APP_URL
+        fromService:
+          name: discord-bot
+          type: web
+          property: url 

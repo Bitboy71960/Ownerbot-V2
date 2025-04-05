@@ -1,0 +1,15 @@
+# Fichiers d'environnement
+.env
+config.json
+
+# Dépendances
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Fichiers système
+.DS_Store
+Thumbs.db 

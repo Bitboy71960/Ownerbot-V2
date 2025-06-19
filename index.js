@@ -146,6 +146,9 @@ const server = http.createServer((req, res) => {
   }
 });
 
+// Lancer le serveur HTTP immédiatement pour que la plateforme détecte le port ouvert
+startServer();
+
 // Variables pour MongoDB
 let mongoClient = null;
 let db = null;
@@ -571,9 +574,6 @@ client.once('ready', async () => {
     
     // Connecter à MongoDB
     await connectToMongoDB();
-    
-    // Démarrer le serveur HTTP
-    startServer();
     
     // Initialiser le cache des invitations
     await initializeInvitesCache();

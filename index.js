@@ -146,9 +146,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-// Lancer le serveur HTTP immédiatement pour que la plateforme détecte le port ouvert
-startServer();
-
 // Variables pour MongoDB
 let mongoClient = null;
 let db = null;
@@ -232,6 +229,9 @@ function startServer() {
     }
   });
 }
+
+// Lancer le serveur HTTP immédiatement pour que la plateforme détecte le port ouvert
+startServer();
 
 // Fonction pour maintenir le bot en vie
 function keepAlive() {

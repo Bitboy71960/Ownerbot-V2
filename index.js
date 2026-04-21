@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, Partials, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, ChannelType, PermissionFlagsBits, ButtonBuilder, ButtonStyle, REST, Routes, SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 require('dotenv').config();
 const http = require('http');
+const PORT = process.env.PORT || 3000;
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');

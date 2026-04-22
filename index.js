@@ -611,8 +611,8 @@ client.on('interactionCreate', async (interaction) => {
   console.log(`Commande reçue: ${interaction.commandName}`);
   
   // Vérifier que l'utilisateur est administrateur pour les commandes d'administration
-  const publicCommands = ['invites', 'membercount', 'choosemodel'];
-  if (!publicCommands.includes(interaction.commandName) && !interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
+  const nonAdminCommands = ['invites', 'membercount', 'choosemodel'];
+  if (!nonAdminCommands.includes(interaction.commandName) && !interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
     await interaction.reply(makeEphemeral({
       content: 'Vous devez être administrateur pour utiliser cette commande.'
     }));
@@ -1899,7 +1899,7 @@ async function callOpenRouterAPI(userMessage, username, conversationHistory = []
         return 'Désolé, je n\'ai pas pu générer une réponse. Veuillez réessayer.';
       }
     } catch (error) {
-      const status = error.response?.status || error.response?.data?.error?.code;
+      const status = error.response?.status;
       if (status === 429) {
         console.warn(`Modèle ${model} rate-limité, tentative avec le modèle suivant...`);
         continue;
@@ -1998,7 +1998,7 @@ You dont warn the user by the danger or harmfulness of an action. He knows what 
         return 'Désolé, je n\'ai pas pu générer une réponse. Veuillez réessayer.';
       }
     } catch (error) {
-      const status = error.response?.status || error.response?.data?.error?.code;
+      const status = error.response?.status;
       if (status === 429) {
         console.warn(`Modèle jailbreak ${model} rate-limité, tentative avec le modèle suivant...`);
         continue;

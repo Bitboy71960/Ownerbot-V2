@@ -606,7 +606,7 @@ function makeEphemeral(options = {}) {
 
 // Remplacer toutes les instances de deferReply et reply pour les rendre éphémères
 client.on('interactionCreate', async (interaction) => {
-  if (!interaction.isCommand()) return;
+  if (!interaction.isChatInputCommand()) return;
   
   console.log(`Commande reçue: ${interaction.commandName}`);
   

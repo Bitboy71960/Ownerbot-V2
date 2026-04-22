@@ -1702,13 +1702,6 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 
-
-
-// Initialisation du client OpenRouter (juste après avoir défini OPENROUTER_API_KEY)
-const openrouter = new OpenRouter({
-  apiKey: OPENROUTER_API_KEY
-});
-
 // Fonction pour appeler l'API OpenRouter (version avec import dynamique)
 async function callOpenRouterAPI(userMessage, username, conversationHistory = []) {
   try {

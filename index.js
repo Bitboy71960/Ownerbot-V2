@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, ChannelType, PermissionFlagsBits, ButtonBuilder, ButtonStyle, REST, Routes, SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { Client, GatewayIntentBits, Partials, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, ChannelType, PermissionFlagsBits, ButtonBuilder, ButtonStyle, REST, Routes, SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, MessageFlags } = require('discord.js');
 require('dotenv').config();
 const http = require('http');
 const fs = require('fs');
@@ -236,7 +236,10 @@ startServer();
 // Fonction pour maintenir le bot en vie
 function keepAlive() {
   // Auto-ping toutes les 5 minutes vers l'URL externe de l'application
-  const appUrl = process.env.APP_URL || `https://${process.env.RENDER_EXTERNAL_HOSTNAME || 'localhost'}:${PORT}`;
+  const appUrl = process.env.APP_URL
+    || (process.env.RENDER_EXTERNAL_HOSTNAME
+      ? `https://${process.env.RENDER_EXTERNAL_HOSTNAME}`
+      : `http://localhost:${PORT}`);
   setInterval(() => {
     try {
       axios.get(appUrl).then(() => {
@@ -594,7 +597,7 @@ client.once('ready', async () => {
 
 // Fonction utilitaire pour rendre toutes les réponses éphémères
 function makeEphemeral(options = {}) {
-  return { ...options, ephemeral: true };
+  return { ...options, flags: (options.flags ?? 0) | MessageFlags.Ephemeral };
 }
 
 // Remplacer toutes les instances de deferReply et reply pour les rendre éphémères

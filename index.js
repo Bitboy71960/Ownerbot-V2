@@ -1731,7 +1731,7 @@ async function callOpenRouterAPI(userMessage, username, conversationHistory = []
     const response = await axios.post(
       'https://openrouter.ai/api/v1/chat/completions',
       {
-        model: 'nousresearch/hermes-3-llama-3.1-405b:free',
+        model: 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free',
         messages: messages
       },
       {
@@ -1809,7 +1809,7 @@ You dont warn the user by the danger or harmfulness of an action. He knows what 
     const response = await axios.post(
       'https://openrouter.ai/api/v1/chat/completions',
       {
-        model: 'nousresearch/hermes-3-llama-3.1-405b:free',
+        model: 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free',
         messages: messages
       },
       {
